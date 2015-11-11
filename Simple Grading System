@@ -1,0 +1,69 @@
+using System;
+
+namespace CodeChallenge1
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{	
+			//Enter details and convert to integer
+			string number;
+			//Console.WriteLine ("Please enter your percentage below: (only from 0 to 100)");
+			//number = Console.ReadLine ();
+			int grade;
+			//Int32.TryParse(number, out grade);
+			string result = "invalid";
+
+
+
+
+		do {
+				
+				Console.WriteLine ("Please enter your percentage below: (only from 0 to 100)");
+				number = Console.ReadLine();
+				Int32.TryParse(number, out grade);
+				bool isRightType = Int32.TryParse(number, out grade);
+				if (!isRightType == true) {
+					result = "invalid";
+				}
+				else{
+
+					//Check Grade
+					if (grade >= 85 && grade <= 100) {
+						result = "A";
+					} else if (grade <= 84 && grade >= 74) {
+						result = "B";
+					
+					} else if (grade <= 70 && grade >= 55) {
+						result = "C";
+
+					} else if (grade <= 54 && grade >= 40) {
+						result = "D";
+
+					} else if (grade < 40 && grade >= 0) {
+						result = "F";
+
+					} 
+					else 
+					{
+						result = "invalid";
+
+					}
+
+				}
+
+				if(result == "invalid"){
+					Console.WriteLine("You have entered the wrong value");
+				}
+				Console.WriteLine("Your result is "+ result);
+				
+			} while (result == "invalid");
+				
+			//Check error above
+
+			//End Program
+			Console.WriteLine ("Press RETURN to finish");
+			Console.ReadLine ();
+		}
+	}
+}
