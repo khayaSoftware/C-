@@ -1,0 +1,62 @@
+using System;
+
+namespace MyGame
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			
+			int lives = 5;
+			int death = 0;
+			Random rnd = new Random ();
+			int number = rnd.Next (1,31);
+			string amount;
+			int guess = 0;
+			int right = 0;
+			bool isWon = false;
+			int count =0;
+
+			Console.WriteLine("Welcome to guess the number!");
+
+			while  (lives != death) {
+						
+						
+						Console.WriteLine ("Pleas enter a number between 1 and 30, you have "+lives+" lives left");
+						amount = Console.ReadLine ();
+						++count;
+				Console.WriteLine("You have made "+count+" attempts");
+						Int32.TryParse(amount, out guess);
+
+						if (guess == number) {
+							Console.WriteLine ("Correct!");
+							Console.WriteLine (number);
+							number = rnd.Next (1,4);
+							lives = 5;
+							++right;
+
+							if (right == 3) {
+								Console.WriteLine ("You've won the game!");
+								lives = death;
+								isWon = true;
+							}
+
+
+						}
+
+						else {
+							Console.WriteLine ("Incorrect!");
+							--lives;
+						}
+			}
+			
+			if(!isWon){
+				Console.WriteLine("You have lost the game!!!! MWUAHAHAHAHAHA!");
+			}
+				
+			Console.ReadLine();
+
+
+		}
+	}
+}
