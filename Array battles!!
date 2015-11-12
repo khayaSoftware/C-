@@ -1,0 +1,93 @@
+using System;
+
+namespace CodeChallenge02
+{
+	public class EmptyClass
+	{
+		public static void Main (string [] args)
+		{
+
+			Random rnd = new Random();
+			int number = rnd.Next(1,101);
+			//DATA
+			int [] opponent = new int[5]; 
+			int[] numbers = new int[5];
+			int max = 0;
+			int max2 = 0;
+			int min = 0;
+			int min2 = 0;
+			int mean = 0;
+			int mean2 = 0;
+			int sum = 0;
+			int sum2 = 0;
+			string nums;
+			int davidScore = 0;
+			int khayaScore = 0;
+
+			//PROMPT
+
+
+			//POPULATE THE ARRAY
+			for (int i = 0; i < numbers.Length; i++) {
+				number = rnd.Next(1,101);
+				numbers [i] = number;
+
+			}
+
+
+
+
+			//MAX
+			for (int i = 0; i < numbers.Length; i++) {
+				if (numbers [i] > max) {
+					max = numbers [i];
+				}
+
+				if (opponent [i] > max2) {
+					max2 = opponent [i];
+				}
+			}
+
+			//MIN
+			min = max;
+			min2 = max2;
+
+			for(int i = 0; i < numbers.Length; i++){
+				if (numbers [i] < min) {
+					min = numbers [i];
+				}
+
+				if (opponent [i] < min2) {
+					min2 = opponent [i];
+				}
+			}
+
+			//SUM FOR AVERAGE
+			for(int i = 0; i < numbers.Length; i++){
+				sum += numbers [i];
+				sum2 += opponent[i];
+			}
+
+
+			//CALCULATION FOR AVERAGE MEAN
+			mean = sum / numbers.Length;
+			mean2 = sum2 / opponent.Length;
+
+			if (mean < mean2) {
+				Console.WriteLine ("David has the highest mean ");
+				++davidScore;
+			} else {
+				Console.WriteLine ("Khaya has the highest mean");
+				++khayaScore;
+			}
+			Console.WriteLine ("Press RETURN for the next round ");
+			Console.ReadLine ();
+
+			if(min )
+			Console.WriteLine ("Min is "+min);
+			Console.WriteLine ("Max is " + max);
+			Console.ReadLine ();
+		}
+	}
+}
+
