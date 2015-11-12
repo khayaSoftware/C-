@@ -1,5 +1,3 @@
-using System;
-
 namespace MyGame
 {
 	class MainClass
@@ -10,33 +8,44 @@ namespace MyGame
 			int lives = 5;
 			int death = 0;
 			Random rnd = new Random ();
-			int number = rnd.Next (1,31);
+			int number = rnd.Next (1,21);
 			string amount;
 			int guess = 0;
 			int right = 0;
 			bool isWon = false;
 			int count =0;
 
-			Console.WriteLine("Welcome to guess the number!");
+			int [] numbers = new int [25];
+			Console.WriteLine ("********************************************************************************");
+			Console.WriteLine("\t\t\t\tWelcome to guess the number!");
+			Console.WriteLine ("********************************************************************************");
+			Console.WriteLine ();
+			Console.WriteLine ("\t\t\t\tPress RETURN to start!");
+			Console.ReadLine ();
 
 			while  (lives != death) {
 						
-						
-						Console.WriteLine ("Pleas enter a number between 1 and 30, you have "+lives+" lives left");
+						//Console.WriteLine ("Hint "+number);
+						Console.WriteLine ();
+
+						Console.WriteLine ("Pleas enter a number between 1 and 20 inclusive, you have "+lives+" lives left");
 						amount = Console.ReadLine ();
 						++count;
-				Console.WriteLine("You have made "+count+" attempts");
+
+						Console.WriteLine ();
+						Console.WriteLine("You have made "+count+" attempts");
 						Int32.TryParse(amount, out guess);
+						numbers [count] = guess;
 
 						if (guess == number) {
-							Console.WriteLine ("Correct!");
-							Console.WriteLine (number);
-							number = rnd.Next (1,4);
+							Console.WriteLine ();
+							Console.WriteLine ("Correct answer!");
 							lives = 5;
 							++right;
 
 							if (right == 3) {
-								Console.WriteLine ("You've won the game!");
+								Console.WriteLine ();
+								Console.WriteLine ("You've won the game! Your famous! :D");
 								lives = death;
 								isWon = true;
 							}
@@ -45,15 +54,30 @@ namespace MyGame
 						}
 
 						else {
-							Console.WriteLine ("Incorrect!");
+							Console.WriteLine ();
+							Console.WriteLine ("Incorrect answer....");
 							--lives;
 						}
+
+				number = rnd.Next (1,21);
+
 			}
+
 			
 			if(!isWon){
-				Console.WriteLine("You have lost the game!!!! MWUAHAHAHAHAHA!");
+				Console.WriteLine("You have lost the game!!!! MWUAHAHAHAHAHA! Your not famous!!");
+				Console.WriteLine ();
 			}
-				
+
+			for (int i = 0; i < numbers.Length; ++i) {
+				if (numbers [i] != 0 ) {
+					Console.WriteLine ();
+					Console.WriteLine ("Attempt no " + i + " is " + numbers [i]);
+				}
+			}
+			Console.WriteLine ("********************************************************************************");
+			Console.WriteLine ("\t\t\t\tGame over press RETURN to exit");
+			Console.WriteLine ("********************************************************************************");
 			Console.ReadLine();
 
 
